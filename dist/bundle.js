@@ -15,11 +15,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "createNumWrapper": () => (/* binding */ createNumWrapper),
 /* harmony export */   "setTimer": () => (/* binding */ setTimer)
 /* harmony export */ });
-var stucture = "\n   <div class=\"timer\">\n      <div class=\"timer__items\">\n         <div class=\"timer__item timer__days\">00</div>\n         <div class=\"timer__item timer__hours\">00</div>\n         <div class=\"timer__item timer__minutes\">00</div>\n         <div class=\"timer__item timer__seconds\">00</div>\n      </div>\n   </div>\n";
+var stucture = "\n   <div class=\"timer\">\n      <div class=\"timer__items\">\n         <div class=\"timer__item timer__days\">00</div>\n         <div class=\"timer__item timer__hours\">00</div>\n         <div class=\"timer__item timer__minutes\">00</div>\n         <div class=\"timer__item timer__seconds\">00</div>\n      </div>\n      <div class=\"timer__titels\">\n         <div class=\"timer__titel\">Days</div>\n         <div class=\"timer__titel\">Hours</div>\n         <div class=\"timer__titel\">Minutes</div>\n         <div class=\"timer__titel\">Seconds</div>\n      </div>\n   </div>\n";
 function createMainContainer() {
   var body = document.querySelector('body');
+  var title = document.createElement('div');
   var mainCont = document.createElement('div');
+  title.classList.add('main-title');
   mainCont.classList.add('main-container');
+  title.innerHTML = "We've been dating for:";
+  body.append(title);
   body.append(mainCont);
 }
 function createMainWrapper() {
@@ -34,17 +38,11 @@ function createNumWrapper() {
 }
 function setTimer() {
   document.addEventListener('DOMContentLoaded', function () {
-    var deadline = new Date(2024, 1, 31);
+    var deadline = new Date(2023, 0, 31);
     var timerId = null;
-    function declensionNum(num, words) {
-      return words[num % 100 > 4 && num % 100 < 20 ? 2 : [2, 0, 1, 1, 1, 2][num % 10 < 5 ? num % 10 : 5]];
-    }
     // вычисляем разницу дат и устанавливаем оставшееся времени в качестве содержимого элементов
     function countdownTimer() {
-      var diff = deadline - new Date();
-      if (diff <= 0) {
-        clearInterval(timerId);
-      }
+      var diff = new Date() - deadline;
       var days = diff > 0 ? Math.floor(diff / 1000 / 60 / 60 / 24) : 0;
       var hours = diff > 0 ? Math.floor(diff / 1000 / 60 / 60) % 24 : 0;
       var minutes = diff > 0 ? Math.floor(diff / 1000 / 60) % 60 : 0;
@@ -53,10 +51,6 @@ function setTimer() {
       $hours.textContent = hours < 10 ? '0' + hours : hours;
       $minutes.textContent = minutes < 10 ? '0' + minutes : minutes;
       $seconds.textContent = seconds < 10 ? '0' + seconds : seconds;
-      $days.dataset.title = declensionNum(days, ['день', 'дня', 'дней']);
-      $hours.dataset.title = declensionNum(hours, ['час', 'часа', 'часов']);
-      $minutes.dataset.title = declensionNum(minutes, ['минута', 'минуты', 'минут']);
-      $seconds.dataset.title = declensionNum(seconds, ['секунда', 'секунды', 'секунд']);
     }
     // получаем элементы, содержащие компоненты даты
     var $days = document.querySelector('.timer__days');
@@ -92,7 +86,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "body{\r\n   background: rgb(223, 190, 5);\r\n   height: 100vh;\r\n   display: flex;\r\n   justify-content: center;\r\n   align-items: center;\r\n}\r\n.main-container{\r\n   margin: 0px auto;\r\n}\r\n.main-wrapper{\r\n   display: flex;\r\n   justify-content: center;\r\n   align-items: center;\r\n   margin: 0px auto;\r\n   width: 600px;\r\n   height: 400px;\r\n   background-color: rgb(216, 18, 18);\r\n}\r\n.timer{\r\n   width: 100%;\r\n   margin: 0px auto;\r\n}\r\n.timer__items{\r\n   display: flex;\r\n   justify-content: space-around;\r\n}", "",{"version":3,"sources":["webpack://./src/styles/style.css"],"names":[],"mappings":"AAAA;GACG,4BAA4B;GAC5B,aAAa;GACb,aAAa;GACb,uBAAuB;GACvB,mBAAmB;AACtB;AACA;GACG,gBAAgB;AACnB;AACA;GACG,aAAa;GACb,uBAAuB;GACvB,mBAAmB;GACnB,gBAAgB;GAChB,YAAY;GACZ,aAAa;GACb,kCAAkC;AACrC;AACA;GACG,WAAW;GACX,gBAAgB;AACnB;AACA;GACG,aAAa;GACb,6BAA6B;AAChC","sourcesContent":["body{\r\n   background: rgb(223, 190, 5);\r\n   height: 100vh;\r\n   display: flex;\r\n   justify-content: center;\r\n   align-items: center;\r\n}\r\n.main-container{\r\n   margin: 0px auto;\r\n}\r\n.main-wrapper{\r\n   display: flex;\r\n   justify-content: center;\r\n   align-items: center;\r\n   margin: 0px auto;\r\n   width: 600px;\r\n   height: 400px;\r\n   background-color: rgb(216, 18, 18);\r\n}\r\n.timer{\r\n   width: 100%;\r\n   margin: 0px auto;\r\n}\r\n.timer__items{\r\n   display: flex;\r\n   justify-content: space-around;\r\n}"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, "*{\r\n   font-family: 'Oswald', sans-serif;\r\n}\r\nbody{\r\n   background: rgb(255,204,0);\r\n   height: 100vh;\r\n   display: flex;\r\n   flex-direction: column;\r\n   justify-content: center;\r\n   align-items: center;\r\n}\r\n.main-container{\r\n   margin: 0px auto;\r\n}\r\n.main-wrapper{\r\n   display: flex;\r\n   justify-content: center;\r\n   align-items: center;\r\n   margin: 0px auto;\r\n   width: 600px;\r\n   height: 400px;\r\n   background-color: rgb(255, 255, 255);\r\n   border-radius: 20px;\r\n}\r\n.timer{\r\n   width: 100%;\r\n   margin: 0px auto;\r\n   display: flex;\r\n   flex-direction: column;\r\n}\r\n.timer__items{\r\n   display: flex;\r\n   justify-content: space-around;\r\n}\r\n.main-title{\r\n   font-weight: 700;\r\n   font-size: 36px;\r\n   margin-bottom: 20px;\r\n}\r\n.timer__titels{\r\n   display: flex;\r\n   justify-content: space-around;\r\n}\r\n.timer__titel:nth-child(1){\r\n   padding-left: 13px;\r\n}\r\n.timer__titel:nth-child(2) {\r\n   padding-left: 20px;\r\n}\r\n.timer__titel:nth-child(3) {\r\n   padding-left: 13px;\r\n}\r\n.timer__item{\r\n   font-weight: 700;\r\n   font-size: 48px;\r\n}\r\n@media (max-width: 600px) {\r\n   .main-wrapper{\r\n      display: flex;\r\n      justify-content: center;\r\n      align-items: center;\r\n      margin: 0px auto;\r\n      width: 500px;\r\n      height: 700px;\r\n      margin: 30px 40px 0px 40px;\r\n      background-color: rgb(255, 255, 255);\r\n      border-radius: 20px;\r\n      padding: 0px 20px;\r\n   }\r\n   .timer{\r\n      height: 100%;\r\n      margin: 0px auto;\r\n      display: flex;\r\n      justify-content: space-around;\r\n      flex-direction: row;\r\n      align-items: center;                                       \r\n   }\r\n   .timer__items{\r\n      height: 100%;\r\n      display: flex;\r\n      justify-content: space-around;\r\n      flex-direction: column;\r\n   }\r\n   .timer__titels{\r\n      height: 100%;\r\n      display: flex;\r\n      justify-content: space-around;\r\n      flex-direction: column;\r\n   }\r\n   .timer__item {\r\n      font-weight: 700;\r\n      font-size: 36px;\r\n   }\r\n   .main-title {\r\n      padding-left: 50px;\r\n      font-weight: 700;\r\n      font-size: 36px;\r\n      margin-bottom: 20px;\r\n   }\r\n}", "",{"version":3,"sources":["webpack://./src/styles/style.css"],"names":[],"mappings":"AAAA;GACG,iCAAiC;AACpC;AACA;GACG,0BAA0B;GAC1B,aAAa;GACb,aAAa;GACb,sBAAsB;GACtB,uBAAuB;GACvB,mBAAmB;AACtB;AACA;GACG,gBAAgB;AACnB;AACA;GACG,aAAa;GACb,uBAAuB;GACvB,mBAAmB;GACnB,gBAAgB;GAChB,YAAY;GACZ,aAAa;GACb,oCAAoC;GACpC,mBAAmB;AACtB;AACA;GACG,WAAW;GACX,gBAAgB;GAChB,aAAa;GACb,sBAAsB;AACzB;AACA;GACG,aAAa;GACb,6BAA6B;AAChC;AACA;GACG,gBAAgB;GAChB,eAAe;GACf,mBAAmB;AACtB;AACA;GACG,aAAa;GACb,6BAA6B;AAChC;AACA;GACG,kBAAkB;AACrB;AACA;GACG,kBAAkB;AACrB;AACA;GACG,kBAAkB;AACrB;AACA;GACG,gBAAgB;GAChB,eAAe;AAClB;AACA;GACG;MACG,aAAa;MACb,uBAAuB;MACvB,mBAAmB;MACnB,gBAAgB;MAChB,YAAY;MACZ,aAAa;MACb,0BAA0B;MAC1B,oCAAoC;MACpC,mBAAmB;MACnB,iBAAiB;GACpB;GACA;MACG,YAAY;MACZ,gBAAgB;MAChB,aAAa;MACb,6BAA6B;MAC7B,mBAAmB;MACnB,mBAAmB;GACtB;GACA;MACG,YAAY;MACZ,aAAa;MACb,6BAA6B;MAC7B,sBAAsB;GACzB;GACA;MACG,YAAY;MACZ,aAAa;MACb,6BAA6B;MAC7B,sBAAsB;GACzB;GACA;MACG,gBAAgB;MAChB,eAAe;GAClB;GACA;MACG,kBAAkB;MAClB,gBAAgB;MAChB,eAAe;MACf,mBAAmB;GACtB;AACH","sourcesContent":["*{\r\n   font-family: 'Oswald', sans-serif;\r\n}\r\nbody{\r\n   background: rgb(255,204,0);\r\n   height: 100vh;\r\n   display: flex;\r\n   flex-direction: column;\r\n   justify-content: center;\r\n   align-items: center;\r\n}\r\n.main-container{\r\n   margin: 0px auto;\r\n}\r\n.main-wrapper{\r\n   display: flex;\r\n   justify-content: center;\r\n   align-items: center;\r\n   margin: 0px auto;\r\n   width: 600px;\r\n   height: 400px;\r\n   background-color: rgb(255, 255, 255);\r\n   border-radius: 20px;\r\n}\r\n.timer{\r\n   width: 100%;\r\n   margin: 0px auto;\r\n   display: flex;\r\n   flex-direction: column;\r\n}\r\n.timer__items{\r\n   display: flex;\r\n   justify-content: space-around;\r\n}\r\n.main-title{\r\n   font-weight: 700;\r\n   font-size: 36px;\r\n   margin-bottom: 20px;\r\n}\r\n.timer__titels{\r\n   display: flex;\r\n   justify-content: space-around;\r\n}\r\n.timer__titel:nth-child(1){\r\n   padding-left: 13px;\r\n}\r\n.timer__titel:nth-child(2) {\r\n   padding-left: 20px;\r\n}\r\n.timer__titel:nth-child(3) {\r\n   padding-left: 13px;\r\n}\r\n.timer__item{\r\n   font-weight: 700;\r\n   font-size: 48px;\r\n}\r\n@media (max-width: 600px) {\r\n   .main-wrapper{\r\n      display: flex;\r\n      justify-content: center;\r\n      align-items: center;\r\n      margin: 0px auto;\r\n      width: 500px;\r\n      height: 700px;\r\n      margin: 30px 40px 0px 40px;\r\n      background-color: rgb(255, 255, 255);\r\n      border-radius: 20px;\r\n      padding: 0px 20px;\r\n   }\r\n   .timer{\r\n      height: 100%;\r\n      margin: 0px auto;\r\n      display: flex;\r\n      justify-content: space-around;\r\n      flex-direction: row;\r\n      align-items: center;                                       \r\n   }\r\n   .timer__items{\r\n      height: 100%;\r\n      display: flex;\r\n      justify-content: space-around;\r\n      flex-direction: column;\r\n   }\r\n   .timer__titels{\r\n      height: 100%;\r\n      display: flex;\r\n      justify-content: space-around;\r\n      flex-direction: column;\r\n   }\r\n   .timer__item {\r\n      font-weight: 700;\r\n      font-size: 36px;\r\n   }\r\n   .main-title {\r\n      padding-left: 50px;\r\n      font-weight: 700;\r\n      font-size: 36px;\r\n      margin-bottom: 20px;\r\n   }\r\n}"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
