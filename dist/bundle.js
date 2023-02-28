@@ -1,13 +1,155 @@
 /******/ (() => { // webpackBootstrap
+/******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
 /***/ "./src/test-index.js":
 /*!***************************!*\
   !*** ./src/test-index.js ***!
   \***************************/
-/***/ (() => {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nSyntaxError: C:\\Users\\Admin\\Desktop\\PET-PROJECTS\\dating-time\\src\\test-index.js: Export 'setPopUpTimer' is not defined. (170:105)\n\n\u001b[0m \u001b[90m 168 |\u001b[39m    })\u001b[0m\n\u001b[0m \u001b[90m 169 |\u001b[39m }\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 170 |\u001b[39m \u001b[36mexport\u001b[39m {createMainContainer\u001b[33m,\u001b[39m createMainWrapper\u001b[33m,\u001b[39m createNumWrapper\u001b[33m,\u001b[39m setTimer\u001b[33m,\u001b[39m createPopUp\u001b[33m,\u001b[39m openClosePopup\u001b[33m,\u001b[39m setPopUpTimer\u001b[33m,\u001b[39m setPopupDates}\u001b[0m\n\u001b[0m \u001b[90m     |\u001b[39m                                                                                                          \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n    at instantiate (C:\\Users\\Admin\\Desktop\\PET-PROJECTS\\dating-time\\node_modules\\@babel\\parser\\lib\\index.js:64:32)\n    at constructor (C:\\Users\\Admin\\Desktop\\PET-PROJECTS\\dating-time\\node_modules\\@babel\\parser\\lib\\index.js:364:12)\n    at Parser.raise (C:\\Users\\Admin\\Desktop\\PET-PROJECTS\\dating-time\\node_modules\\@babel\\parser\\lib\\index.js:3253:19)\n    at Parser.parseProgram (C:\\Users\\Admin\\Desktop\\PET-PROJECTS\\dating-time\\node_modules\\@babel\\parser\\lib\\index.js:12442:14)\n    at Parser.parseTopLevel (C:\\Users\\Admin\\Desktop\\PET-PROJECTS\\dating-time\\node_modules\\@babel\\parser\\lib\\index.js:12429:25)\n    at Parser.parse (C:\\Users\\Admin\\Desktop\\PET-PROJECTS\\dating-time\\node_modules\\@babel\\parser\\lib\\index.js:14250:10)\n    at parse (C:\\Users\\Admin\\Desktop\\PET-PROJECTS\\dating-time\\node_modules\\@babel\\parser\\lib\\index.js:14292:38)\n    at parser (C:\\Users\\Admin\\Desktop\\PET-PROJECTS\\dating-time\\node_modules\\@babel\\core\\lib\\parser\\index.js:41:34)\n    at parser.next (<anonymous>)\n    at normalizeFile (C:\\Users\\Admin\\Desktop\\PET-PROJECTS\\dating-time\\node_modules\\@babel\\core\\lib\\transformation\\normalize-file.js:64:38)\n    at normalizeFile.next (<anonymous>)\n    at run (C:\\Users\\Admin\\Desktop\\PET-PROJECTS\\dating-time\\node_modules\\@babel\\core\\lib\\transformation\\index.js:21:50)\n    at run.next (<anonymous>)\n    at transform (C:\\Users\\Admin\\Desktop\\PET-PROJECTS\\dating-time\\node_modules\\@babel\\core\\lib\\transform.js:22:41)\n    at transform.next (<anonymous>)\n    at step (C:\\Users\\Admin\\Desktop\\PET-PROJECTS\\dating-time\\node_modules\\gensync\\index.js:261:32)\n    at C:\\Users\\Admin\\Desktop\\PET-PROJECTS\\dating-time\\node_modules\\gensync\\index.js:273:13\n    at async.call.result.err.err (C:\\Users\\Admin\\Desktop\\PET-PROJECTS\\dating-time\\node_modules\\gensync\\index.js:223:11)");
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "createMainContainer": () => (/* binding */ createMainContainer),
+/* harmony export */   "createMainWrapper": () => (/* binding */ createMainWrapper),
+/* harmony export */   "createNumWrapper": () => (/* binding */ createNumWrapper),
+/* harmony export */   "createPopUp": () => (/* binding */ createPopUp),
+/* harmony export */   "openClosePopup": () => (/* binding */ openClosePopup),
+/* harmony export */   "setPopupDates": () => (/* binding */ setPopupDates),
+/* harmony export */   "setTimer": () => (/* binding */ setTimer)
+/* harmony export */ });
+var stucture = "\n   <div class=\"timer\">\n      <div class=\"timer__items\">\n         <div class=\"timer__item timer__days\">00</div>\n         <div class=\"timer__item timer__hours\">00</div>\n         <div class=\"timer__item timer__minutes\">00</div>\n         <div class=\"timer__item timer__seconds\">00</div>\n      </div>\n      <div class=\"timer__titels\">\n         <div class=\"timer__titel\">Days</div>\n         <div class=\"timer__titel\">Hours</div>\n         <div class=\"timer__titel\">Minutes</div>\n         <div class=\"timer__titel\">Seconds</div>\n      </div>\n   </div>\n";
+var body = document.querySelector('body');
+function createMainContainer() {
+  var title = document.createElement('div');
+  var mainCont = document.createElement('div');
+  var dates = document.createElement('div');
+  title.classList.add('main-title');
+  mainCont.classList.add('main-container');
+  dates.classList.add('dates');
+  title.innerHTML = "We've been dating for:";
+  dates.innerHTML = "Click on me";
+  body.append(title);
+  body.append(mainCont);
+  body.append(dates);
+}
+function createMainWrapper() {
+  var mainCont = document.querySelector('.main-container');
+  var mainWrapp = document.createElement('div');
+  mainWrapp.classList.add('main-wrapper');
+  mainCont.append(mainWrapp);
+}
+function createNumWrapper() {
+  var mainCont = document.querySelector('.main-wrapper');
+  mainCont.innerHTML = stucture;
+}
+// POPUP
+function createPopUp() {
+  var popUpWrapper = document.createElement('div');
+  var popUpContainer = document.createElement('div');
+  var popUpOverlay = document.createElement('div');
+  var popUpButtonWrap = document.createElement('div');
+  var popUpButtonInhalt = "\n      <ul class=\"popup__list\">\n         <li class=\"popup__list-item\">Month</li>\n         <li class=\"popup__list-item\">Year</li>\n         <li class=\"popup__list-item\">B-Date-1(100d)</li>\n         <li class=\"popup__list-item\">B-Date-2(200d)</li>\n         <li class=\"popup__list-item\">B-Date-3(1000d)</li>\n         <li class=\"popup__list-item\">The End</li>\n      </ul>\n   ";
+  popUpWrapper.classList.add('popup-wrapper');
+  popUpContainer.classList.add('popup-container');
+  popUpOverlay.classList.add('popup-overlay');
+  popUpButtonWrap.classList.add('popup-button-wrap');
+  popUpContainer.innerHTML = "\n   <div class=\"timers\">\n      <div class=\"timers__items\">\n         <div class=\"timers__item timers__days\">00</div>\n         <div class=\"timers__item timers__hours\">00</div>\n         <div class=\"timers__item timers__minutes\">00</div>\n         <div class=\"timers__item timers__seconds\">00</div>\n      </div>\n      <div class=\"timers__titels\">\n         <div class=\"timers__titel\">Days</div>\n         <div class=\"timers__titel\">Hours</div>\n         <div class=\"timers__titel\">Minutes</div>\n         <div class=\"timers__titel\">Seconds</div>\n      </div>\n   </div>\n";
+  popUpButtonWrap.innerHTML = popUpButtonInhalt;
+  popUpContainer.append(popUpButtonWrap);
+  body.append(popUpWrapper);
+  popUpWrapper.append(popUpOverlay);
+  popUpWrapper.append(popUpContainer);
+}
+function openClosePopup() {
+  var popUpButton = document.querySelector('.dates');
+  var popupWrapper = document.querySelector('.popup-wrapper');
+  var popUpOverlay = document.querySelector('.popup-overlay');
+  popUpButton.addEventListener('click', function () {
+    popupWrapper.classList.add('popup-wrapper-open');
+  });
+  popUpOverlay.addEventListener('click', function () {
+    popupWrapper.classList.remove('popup-wrapper-open');
+  });
+}
+
+// TIMER ON MAIN PAGE
+function setTimer(deadline) {
+  document.addEventListener('DOMContentLoaded', function () {
+    var timerId = null;
+    // вычисляем разницу дат и устанавливаем оставшееся времени в качестве содержимого элементов
+    function countdownTimer() {
+      var diff = new Date() - deadline;
+      var days = diff > 0 ? Math.floor(diff / 1000 / 60 / 60 / 24) : 0;
+      var hours = diff > 0 ? Math.floor(diff / 1000 / 60 / 60) % 24 : 0;
+      var minutes = diff > 0 ? Math.floor(diff / 1000 / 60) % 60 : 0;
+      var seconds = diff > 0 ? Math.floor(diff / 1000) % 60 : 0;
+      $days.textContent = days < 10 ? '0' + days : days;
+      $hours.textContent = hours < 10 ? '0' + hours : hours;
+      $minutes.textContent = minutes < 10 ? '0' + minutes : minutes;
+      $seconds.textContent = seconds < 10 ? '0' + seconds : seconds;
+    }
+    // получаем элементы, содержащие компоненты даты
+    var $days = document.querySelector('.timer__days');
+    var $hours = document.querySelector('.timer__hours');
+    var $minutes = document.querySelector('.timer__minutes');
+    var $seconds = document.querySelector('.timer__seconds');
+    // вызываем функцию countdownTimer
+    countdownTimer();
+    // вызываем функцию countdownTimer каждую секунду
+    timerId = setInterval(countdownTimer, 1000);
+  });
+}
+//   POPUP TIMER
+var deadline;
+function setPopUpTimer() {
+  var timerId = null;
+  // вычисляем разницу дат и устанавливаем оставшееся времени в качестве содержимого элементов
+  function countdownTimer() {
+    var diff = deadline - new Date();
+    var days = diff > 0 ? Math.floor(diff / 1000 / 60 / 60 / 24) : 0;
+    var hours = diff > 0 ? Math.floor(diff / 1000 / 60 / 60) % 24 : 0;
+    var minutes = diff > 0 ? Math.floor(diff / 1000 / 60) % 60 : 0;
+    var seconds = diff > 0 ? Math.floor(diff / 1000) % 60 : 0;
+    $days.textContent = days < 10 ? '0' + days : days;
+    $hours.textContent = hours < 10 ? '0' + hours : hours;
+    $minutes.textContent = minutes < 10 ? '0' + minutes : minutes;
+    $seconds.textContent = seconds < 10 ? '0' + seconds : seconds;
+  }
+  // получаем элементы, содержащие компоненты даты
+  var $days = document.querySelector('.timers__days');
+  var $hours = document.querySelector('.timers__hours');
+  var $minutes = document.querySelector('.timers__minutes');
+  var $seconds = document.querySelector('.timers__seconds');
+  // вызываем функцию countdownTimer
+  countdownTimer();
+  // вызываем функцию countdownTimer каждую секунду
+  timerId = setInterval(countdownTimer, 1000);
+}
+
+// SET POPUP DATES
+function setPopupDates() {
+  var listItem = document.querySelectorAll('.popup__list-item');
+  listItem.forEach(function (e, index) {
+    e.addEventListener('click', function () {
+      setPopUpTimer(new Date(2023, 1, 31, 20, 0, 0, 0));
+      if (index === 0) {
+        deadline = new Date(2023, 1, 31, 20, 0, 0, 0);
+      } else if (index === 1) {
+        deadline = new Date(2024, 0, 31, 20, 0, 0, 0);
+      } else if (index === 2) {
+        deadline = new Date(2023, 4, 11, 20, 0, 0, 0);
+      } else if (index === 3) {
+        deadline = new Date(2023, 7, 19, 20, 0, 0, 0);
+      } else if (index === 4) {
+        deadline = new Date(2025, 9, 27, 20, 0, 0, 0);
+      } else if (index === 5) {
+        alert('не будет зи энда никакого');
+      }
+    });
+  });
+}
+
 
 /***/ }),
 
@@ -17,7 +159,6 @@ throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index
   \********************************************************************/
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
@@ -44,7 +185,6 @@ ___CSS_LOADER_EXPORT___.push([module.id, "*{\r\n   font-family: 'Oswald', sans-s
   \*****************************************************/
 /***/ ((module) => {
 
-"use strict";
 
 
 /*
@@ -139,7 +279,6 @@ module.exports = function (cssWithMappingToString) {
   \************************************************************/
 /***/ ((module) => {
 
-"use strict";
 
 
 module.exports = function (item) {
@@ -165,7 +304,6 @@ module.exports = function (item) {
   \******************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
@@ -220,7 +358,6 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
   \****************************************************************************/
 /***/ ((module) => {
 
-"use strict";
 
 
 var stylesInDOM = [];
@@ -334,7 +471,6 @@ module.exports = function (list, options) {
   \********************************************************************/
 /***/ ((module) => {
 
-"use strict";
 
 
 var memo = {};
@@ -383,7 +519,6 @@ module.exports = insertBySelector;
   \**********************************************************************/
 /***/ ((module) => {
 
-"use strict";
 
 
 /* istanbul ignore next  */
@@ -404,7 +539,6 @@ module.exports = insertStyleElement;
   \**********************************************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-"use strict";
 
 
 /* istanbul ignore next  */
@@ -426,7 +560,6 @@ module.exports = setAttributesWithoutAttributes;
   \***************************************************************/
 /***/ ((module) => {
 
-"use strict";
 
 
 /* istanbul ignore next  */
@@ -506,7 +639,6 @@ module.exports = domAPI;
   \*********************************************************************/
 /***/ ((module) => {
 
-"use strict";
 
 
 /* istanbul ignore next  */
@@ -600,15 +732,13 @@ module.exports = styleTagTransform;
 /******/ 	
 /************************************************************************/
 var __webpack_exports__ = {};
-// This entry need to be wrapped in an IIFE because it need to be in strict mode.
+// This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
 (() => {
-"use strict";
 /*!**********************!*\
   !*** ./src/index.js ***!
   \**********************/
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _test_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./test-index.js */ "./src/test-index.js");
-/* harmony import */ var _test_index_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_test_index_js__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _styles_style_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./styles/style.css */ "./src/styles/style.css");
 
 
