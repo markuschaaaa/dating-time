@@ -41,15 +41,27 @@ function createNumWrapper(){
    const mainCont = document.querySelector('.main-wrapper')
    mainCont.innerHTML = stucture
 }
-
+// POPUP
 function createPopUp(){
    const popUpWrapper = document.createElement('div');
    const popUpContainer = document.createElement('div');
    const popUpOverlay = document.createElement('div');
+   const popUpButtonWrap = document.createElement('div');
+   const popUpButtonInhalt = `
+      <ul class="popup__list">
+         <li class="popup__list-item">Month</li>
+         <li class="popup__list-item">Year</li>
+         <li class="popup__list-item">B-Date-1(100d)</li>
+         <li class="popup__list-item">B-Date-2(200d)</li>
+         <li class="popup__list-item">B-Date-3(1000d)</li>
+         <li class="popup__list-item">The End</li>
+      </ul>
+   `
 
    popUpWrapper.classList.add('popup-wrapper')
    popUpContainer.classList.add('popup-container')
    popUpOverlay.classList.add('popup-overlay')
+   popUpButtonWrap.classList.add('popup-button-wrap')
    popUpContainer.innerHTML = `
    <div class="timers">
       <div class="timers__items">
@@ -66,6 +78,8 @@ function createPopUp(){
       </div>
    </div>
 `
+   popUpButtonWrap.innerHTML = popUpButtonInhalt
+   popUpContainer.append(popUpButtonWrap)
    body.append(popUpWrapper)
    popUpWrapper.append(popUpOverlay)
    popUpWrapper.append(popUpContainer)
@@ -83,6 +97,8 @@ function openClosePopup() {
    })
 }
 
+
+// TIMER ON MAIN PAGE
 function setTimer(deadline){
   document.addEventListener('DOMContentLoaded', function() {
   
@@ -111,10 +127,9 @@ function setTimer(deadline){
 });
 
 }
-
-function setPopUpTimer(deadline){
-  document.addEventListener('DOMContentLoaded', function() {
-  
+//   POPUP TIMER
+let deadline ;
+function setPopUpTimer(){
   let timerId = null;
   // вычисляем разницу дат и устанавливаем оставшееся времени в качестве содержимого элементов
   function countdownTimer() {
@@ -137,7 +152,28 @@ function setPopUpTimer(deadline){
   countdownTimer();
   // вызываем функцию countdownTimer каждую секунду
   timerId = setInterval(countdownTimer, 1000);
-});
-
 }
-export {createMainContainer, createMainWrapper, createNumWrapper, setTimer, createPopUp, openClosePopup, setPopUpTimer}
+
+// SET POPUP DATES
+function setPopupDates() {
+   const listItem = document.querySelectorAll('.popup__list-item')
+   listItem.forEach((e, index)=>{
+      e.addEventListener('click', ()=>{
+         setPopUpTimer(new Date(2023, 1, 31, 20, 0, 0, 0))
+         if(index === 0){
+            deadline = new Date(2023, 1, 31, 20, 0, 0, 0)
+         }else if(index === 1){
+            deadline = new Date(2024, 0, 31, 20, 0, 0, 0)
+         }else if(index === 2){
+            deadline = new Date(2023, 4, 11, 20, 0, 0, 0)
+         }else if(index === 3){
+            deadline = new Date(2023, 7, 19, 20, 0, 0, 0)
+         }else if(index === 4){
+            deadline = new Date(2025, 9, 27, 20, 0, 0, 0)
+         }else if(index === 5){
+            alert('не будет зи энда никакого')
+         }
+      });
+   })
+}
+export {createMainContainer, createMainWrapper, createNumWrapper, setTimer, createPopUp, openClosePopup, setPopupDates}

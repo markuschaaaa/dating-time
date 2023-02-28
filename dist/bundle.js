@@ -1,124 +1,13 @@
 /******/ (() => { // webpackBootstrap
-/******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
 /***/ "./src/test-index.js":
 /*!***************************!*\
   !*** ./src/test-index.js ***!
   \***************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+/***/ (() => {
 
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "createMainContainer": () => (/* binding */ createMainContainer),
-/* harmony export */   "createMainWrapper": () => (/* binding */ createMainWrapper),
-/* harmony export */   "createNumWrapper": () => (/* binding */ createNumWrapper),
-/* harmony export */   "createPopUp": () => (/* binding */ createPopUp),
-/* harmony export */   "openClosePopup": () => (/* binding */ openClosePopup),
-/* harmony export */   "setPopUpTimer": () => (/* binding */ setPopUpTimer),
-/* harmony export */   "setTimer": () => (/* binding */ setTimer)
-/* harmony export */ });
-var stucture = "\n   <div class=\"timer\">\n      <div class=\"timer__items\">\n         <div class=\"timer__item timer__days\">00</div>\n         <div class=\"timer__item timer__hours\">00</div>\n         <div class=\"timer__item timer__minutes\">00</div>\n         <div class=\"timer__item timer__seconds\">00</div>\n      </div>\n      <div class=\"timer__titels\">\n         <div class=\"timer__titel\">Days</div>\n         <div class=\"timer__titel\">Hours</div>\n         <div class=\"timer__titel\">Minutes</div>\n         <div class=\"timer__titel\">Seconds</div>\n      </div>\n   </div>\n";
-var body = document.querySelector('body');
-function createMainContainer() {
-  var title = document.createElement('div');
-  var mainCont = document.createElement('div');
-  var dates = document.createElement('div');
-  title.classList.add('main-title');
-  mainCont.classList.add('main-container');
-  dates.classList.add('dates');
-  title.innerHTML = "We've been dating for:";
-  dates.innerHTML = "Click on me";
-  body.append(title);
-  body.append(mainCont);
-  body.append(dates);
-}
-function createMainWrapper() {
-  var mainCont = document.querySelector('.main-container');
-  var mainWrapp = document.createElement('div');
-  mainWrapp.classList.add('main-wrapper');
-  mainCont.append(mainWrapp);
-}
-function createNumWrapper() {
-  var mainCont = document.querySelector('.main-wrapper');
-  mainCont.innerHTML = stucture;
-}
-function createPopUp() {
-  var popUpWrapper = document.createElement('div');
-  var popUpContainer = document.createElement('div');
-  var popUpOverlay = document.createElement('div');
-  popUpWrapper.classList.add('popup-wrapper');
-  popUpContainer.classList.add('popup-container');
-  popUpOverlay.classList.add('popup-overlay');
-  popUpContainer.innerHTML = "\n   <div class=\"timers\">\n      <div class=\"timers__items\">\n         <div class=\"timers__item timers__days\">00</div>\n         <div class=\"timers__item timers__hours\">00</div>\n         <div class=\"timers__item timers__minutes\">00</div>\n         <div class=\"timers__item timers__seconds\">00</div>\n      </div>\n      <div class=\"timers__titels\">\n         <div class=\"timers__titel\">Days</div>\n         <div class=\"timers__titel\">Hours</div>\n         <div class=\"timers__titel\">Minutes</div>\n         <div class=\"timers__titel\">Seconds</div>\n      </div>\n   </div>\n";
-  body.append(popUpWrapper);
-  popUpWrapper.append(popUpOverlay);
-  popUpWrapper.append(popUpContainer);
-}
-function openClosePopup() {
-  var popUpButton = document.querySelector('.dates');
-  var popupWrapper = document.querySelector('.popup-wrapper');
-  var popUpOverlay = document.querySelector('.popup-overlay');
-  popUpButton.addEventListener('click', function () {
-    popupWrapper.classList.add('popup-wrapper-open');
-  });
-  popUpOverlay.addEventListener('click', function () {
-    popupWrapper.classList.remove('popup-wrapper-open');
-  });
-}
-function setTimer(deadline) {
-  document.addEventListener('DOMContentLoaded', function () {
-    var timerId = null;
-    // вычисляем разницу дат и устанавливаем оставшееся времени в качестве содержимого элементов
-    function countdownTimer() {
-      var diff = new Date() - deadline;
-      var days = diff > 0 ? Math.floor(diff / 1000 / 60 / 60 / 24) : 0;
-      var hours = diff > 0 ? Math.floor(diff / 1000 / 60 / 60) % 24 : 0;
-      var minutes = diff > 0 ? Math.floor(diff / 1000 / 60) % 60 : 0;
-      var seconds = diff > 0 ? Math.floor(diff / 1000) % 60 : 0;
-      $days.textContent = days < 10 ? '0' + days : days;
-      $hours.textContent = hours < 10 ? '0' + hours : hours;
-      $minutes.textContent = minutes < 10 ? '0' + minutes : minutes;
-      $seconds.textContent = seconds < 10 ? '0' + seconds : seconds;
-    }
-    // получаем элементы, содержащие компоненты даты
-    var $days = document.querySelector('.timer__days');
-    var $hours = document.querySelector('.timer__hours');
-    var $minutes = document.querySelector('.timer__minutes');
-    var $seconds = document.querySelector('.timer__seconds');
-    // вызываем функцию countdownTimer
-    countdownTimer();
-    // вызываем функцию countdownTimer каждую секунду
-    timerId = setInterval(countdownTimer, 1000);
-  });
-}
-function setPopUpTimer(deadline) {
-  document.addEventListener('DOMContentLoaded', function () {
-    var timerId = null;
-    // вычисляем разницу дат и устанавливаем оставшееся времени в качестве содержимого элементов
-    function countdownTimer() {
-      var diff = deadline - new Date();
-      var days = diff > 0 ? Math.floor(diff / 1000 / 60 / 60 / 24) : 0;
-      var hours = diff > 0 ? Math.floor(diff / 1000 / 60 / 60) % 24 : 0;
-      var minutes = diff > 0 ? Math.floor(diff / 1000 / 60) % 60 : 0;
-      var seconds = diff > 0 ? Math.floor(diff / 1000) % 60 : 0;
-      $days.textContent = days < 10 ? '0' + days : days;
-      $hours.textContent = hours < 10 ? '0' + hours : hours;
-      $minutes.textContent = minutes < 10 ? '0' + minutes : minutes;
-      $seconds.textContent = seconds < 10 ? '0' + seconds : seconds;
-    }
-    // получаем элементы, содержащие компоненты даты
-    var $days = document.querySelector('.timers__days');
-    var $hours = document.querySelector('.timers__hours');
-    var $minutes = document.querySelector('.timers__minutes');
-    var $seconds = document.querySelector('.timers__seconds');
-    // вызываем функцию countdownTimer
-    countdownTimer();
-    // вызываем функцию countdownTimer каждую секунду
-    timerId = setInterval(countdownTimer, 1000);
-  });
-}
-
+throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nSyntaxError: C:\\Users\\Admin\\Desktop\\PET-PROJECTS\\dating-time\\src\\test-index.js: Export 'setPopUpTimer' is not defined. (170:105)\n\n\u001b[0m \u001b[90m 168 |\u001b[39m    })\u001b[0m\n\u001b[0m \u001b[90m 169 |\u001b[39m }\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 170 |\u001b[39m \u001b[36mexport\u001b[39m {createMainContainer\u001b[33m,\u001b[39m createMainWrapper\u001b[33m,\u001b[39m createNumWrapper\u001b[33m,\u001b[39m setTimer\u001b[33m,\u001b[39m createPopUp\u001b[33m,\u001b[39m openClosePopup\u001b[33m,\u001b[39m setPopUpTimer\u001b[33m,\u001b[39m setPopupDates}\u001b[0m\n\u001b[0m \u001b[90m     |\u001b[39m                                                                                                          \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n    at instantiate (C:\\Users\\Admin\\Desktop\\PET-PROJECTS\\dating-time\\node_modules\\@babel\\parser\\lib\\index.js:64:32)\n    at constructor (C:\\Users\\Admin\\Desktop\\PET-PROJECTS\\dating-time\\node_modules\\@babel\\parser\\lib\\index.js:364:12)\n    at Parser.raise (C:\\Users\\Admin\\Desktop\\PET-PROJECTS\\dating-time\\node_modules\\@babel\\parser\\lib\\index.js:3253:19)\n    at Parser.parseProgram (C:\\Users\\Admin\\Desktop\\PET-PROJECTS\\dating-time\\node_modules\\@babel\\parser\\lib\\index.js:12442:14)\n    at Parser.parseTopLevel (C:\\Users\\Admin\\Desktop\\PET-PROJECTS\\dating-time\\node_modules\\@babel\\parser\\lib\\index.js:12429:25)\n    at Parser.parse (C:\\Users\\Admin\\Desktop\\PET-PROJECTS\\dating-time\\node_modules\\@babel\\parser\\lib\\index.js:14250:10)\n    at parse (C:\\Users\\Admin\\Desktop\\PET-PROJECTS\\dating-time\\node_modules\\@babel\\parser\\lib\\index.js:14292:38)\n    at parser (C:\\Users\\Admin\\Desktop\\PET-PROJECTS\\dating-time\\node_modules\\@babel\\core\\lib\\parser\\index.js:41:34)\n    at parser.next (<anonymous>)\n    at normalizeFile (C:\\Users\\Admin\\Desktop\\PET-PROJECTS\\dating-time\\node_modules\\@babel\\core\\lib\\transformation\\normalize-file.js:64:38)\n    at normalizeFile.next (<anonymous>)\n    at run (C:\\Users\\Admin\\Desktop\\PET-PROJECTS\\dating-time\\node_modules\\@babel\\core\\lib\\transformation\\index.js:21:50)\n    at run.next (<anonymous>)\n    at transform (C:\\Users\\Admin\\Desktop\\PET-PROJECTS\\dating-time\\node_modules\\@babel\\core\\lib\\transform.js:22:41)\n    at transform.next (<anonymous>)\n    at step (C:\\Users\\Admin\\Desktop\\PET-PROJECTS\\dating-time\\node_modules\\gensync\\index.js:261:32)\n    at C:\\Users\\Admin\\Desktop\\PET-PROJECTS\\dating-time\\node_modules\\gensync\\index.js:273:13\n    at async.call.result.err.err (C:\\Users\\Admin\\Desktop\\PET-PROJECTS\\dating-time\\node_modules\\gensync\\index.js:223:11)");
 
 /***/ }),
 
@@ -128,6 +17,7 @@ function setPopUpTimer(deadline) {
   \********************************************************************/
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
@@ -141,7 +31,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "*{\r\n   font-family: 'Oswald', sans-serif;\r\n}\r\nbody{\r\n   background: rgb(255,204,0);\r\n   height: 100vh;\r\n   display: flex;\r\n   flex-direction: column;\r\n   justify-content: center;\r\n   align-items: center;\r\n}\r\n.main-container{\r\n   margin: 0px auto;\r\n}\r\n.main-wrapper{\r\n   display: flex;\r\n   justify-content: center;\r\n   align-items: center;\r\n   margin: 0px auto;\r\n   width: 600px;\r\n   height: 400px;\r\n   background-color: rgb(255, 255, 255);\r\n   border-radius: 20px;\r\n}\r\n.timer{\r\n   width: 100%;\r\n   margin: 0px auto;\r\n   display: flex;\r\n   flex-direction: column;\r\n}\r\n.timer__items{\r\n   display: flex;\r\n   justify-content: space-around;\r\n}\r\n.main-title{\r\n   font-weight: 700;\r\n   font-size: 36px;\r\n   margin-bottom: 20px;\r\n}\r\n.dates{\r\n   font-weight: 700;\r\n   font-size: 36px;\r\n   margin-top: 20px;\r\n   cursor: pointer;\r\n}\r\n.timer__titels{\r\n   display: flex;\r\n   justify-content: space-around;\r\n}\r\n.timer__titel:nth-child(1){\r\n   padding-left: 13px;\r\n}\r\n.timer__titel:nth-child(2) {\r\n   padding-left: 20px;\r\n}\r\n.timer__titel:nth-child(3) {\r\n   padding-left: 13px;\r\n}\r\n.timer__item{\r\n   font-weight: 700;\r\n   font-size: 48px;\r\n}\r\n\r\n@media (max-width: 600px) {\r\n   body{\r\n      display: flex;\r\n   }\r\n   .main-wrapper{\r\n      display: flex;\r\n      justify-content: center;\r\n      align-items: center;\r\n      margin: 0px auto;\r\n      width: 300px;\r\n      height: 500px;\r\n      margin: 30px 40px 0px 40px;\r\n      background-color: rgb(255, 255, 255);\r\n      border-radius: 20px;\r\n      padding: 0px 20px;\r\n   }\r\n   .timer{\r\n      height: 100%;\r\n      margin: 0px auto;\r\n      display: flex;\r\n      justify-content: space-around;\r\n      flex-direction: row;\r\n      align-items: center;                                       \r\n   }\r\n   .timer__items{\r\n      height: 100%;\r\n      display: flex;\r\n      justify-content: space-around;\r\n      flex-direction: column;\r\n   }\r\n   .timer__titels{\r\n      height: 100%;\r\n      display: flex;\r\n      justify-content: space-around;\r\n      flex-direction: column;\r\n   }\r\n   .timer__item {\r\n      font-weight: 700;\r\n      font-size: 36px;\r\n   }\r\n   .main-title {\r\n      padding-left: 50px;\r\n      font-weight: 700;\r\n      font-size: 36px;\r\n      margin-bottom: 20px;\r\n   }\r\n}\r\n\r\n@media (max-width: 480px){\r\n   .main-wrapper{\r\n      display: flex;\r\n      justify-content: center;\r\n      align-items: center;\r\n      margin: 0px auto;\r\n      width: 260px;\r\n      height: 400px;\r\n      margin: 30px 40px 0px 40px;\r\n      background-color: rgb(255, 255, 255);\r\n      border-radius: 20px;\r\n      padding: 0px 20px;\r\n   }\r\n}\r\n/* POPUP */\r\n.popup-wrapper{\r\n   visibility: hidden;\r\n   position: fixed;\r\n   display: flex;\r\n   align-items: center;\r\n   top: 0;\r\n   left: 0;\r\n   width: 100%;\r\n   height: 100%;\r\n   \r\n}\r\n.popup-wrapper-open{\r\n   visibility: visible;\r\n}\r\n.popup-container{\r\n   position: relative;\r\n   width: 600px;\r\n   height: 600px;\r\n   margin: 0px auto;\r\n   background: rgb(222, 219, 219);\r\n   z-index: 1;\r\n}\r\n.popup-overlay{\r\n   position: absolute;\r\n   top: 0;\r\n   left: 0;\r\n   width: 100%;\r\n   height: 102%;\r\n   background: #000;\r\n   opacity: 0.7;\r\n   z-index: 0;\r\n}\r\n\r\n.timers {\r\n   width: 100%;\r\n   margin: 0px auto;\r\n   display: flex;\r\n   flex-direction: column;\r\n}\r\n\r\n.timers__items {\r\n   display: flex;\r\n   justify-content: space-around;\r\n}\r\n.timers__titels {\r\n   display: flex;\r\n   justify-content: space-around;\r\n}\r\n\r\n.timers__titel:nth-child(1) {\r\n   padding-left: 13px;\r\n}\r\n\r\n.timers__titel:nth-child(2) {\r\n   padding-left: 20px;\r\n}\r\n\r\n.timers__titel:nth-child(3) {\r\n   padding-left: 13px;\r\n}\r\n\r\n.timers__item {\r\n   font-weight: 700;\r\n   font-size: 48px;\r\n}", "",{"version":3,"sources":["webpack://./src/styles/style.css"],"names":[],"mappings":"AAAA;GACG,iCAAiC;AACpC;AACA;GACG,0BAA0B;GAC1B,aAAa;GACb,aAAa;GACb,sBAAsB;GACtB,uBAAuB;GACvB,mBAAmB;AACtB;AACA;GACG,gBAAgB;AACnB;AACA;GACG,aAAa;GACb,uBAAuB;GACvB,mBAAmB;GACnB,gBAAgB;GAChB,YAAY;GACZ,aAAa;GACb,oCAAoC;GACpC,mBAAmB;AACtB;AACA;GACG,WAAW;GACX,gBAAgB;GAChB,aAAa;GACb,sBAAsB;AACzB;AACA;GACG,aAAa;GACb,6BAA6B;AAChC;AACA;GACG,gBAAgB;GAChB,eAAe;GACf,mBAAmB;AACtB;AACA;GACG,gBAAgB;GAChB,eAAe;GACf,gBAAgB;GAChB,eAAe;AAClB;AACA;GACG,aAAa;GACb,6BAA6B;AAChC;AACA;GACG,kBAAkB;AACrB;AACA;GACG,kBAAkB;AACrB;AACA;GACG,kBAAkB;AACrB;AACA;GACG,gBAAgB;GAChB,eAAe;AAClB;;AAEA;GACG;MACG,aAAa;GAChB;GACA;MACG,aAAa;MACb,uBAAuB;MACvB,mBAAmB;MACnB,gBAAgB;MAChB,YAAY;MACZ,aAAa;MACb,0BAA0B;MAC1B,oCAAoC;MACpC,mBAAmB;MACnB,iBAAiB;GACpB;GACA;MACG,YAAY;MACZ,gBAAgB;MAChB,aAAa;MACb,6BAA6B;MAC7B,mBAAmB;MACnB,mBAAmB;GACtB;GACA;MACG,YAAY;MACZ,aAAa;MACb,6BAA6B;MAC7B,sBAAsB;GACzB;GACA;MACG,YAAY;MACZ,aAAa;MACb,6BAA6B;MAC7B,sBAAsB;GACzB;GACA;MACG,gBAAgB;MAChB,eAAe;GAClB;GACA;MACG,kBAAkB;MAClB,gBAAgB;MAChB,eAAe;MACf,mBAAmB;GACtB;AACH;;AAEA;GACG;MACG,aAAa;MACb,uBAAuB;MACvB,mBAAmB;MACnB,gBAAgB;MAChB,YAAY;MACZ,aAAa;MACb,0BAA0B;MAC1B,oCAAoC;MACpC,mBAAmB;MACnB,iBAAiB;GACpB;AACH;AACA,UAAU;AACV;GACG,kBAAkB;GAClB,eAAe;GACf,aAAa;GACb,mBAAmB;GACnB,MAAM;GACN,OAAO;GACP,WAAW;GACX,YAAY;;AAEf;AACA;GACG,mBAAmB;AACtB;AACA;GACG,kBAAkB;GAClB,YAAY;GACZ,aAAa;GACb,gBAAgB;GAChB,8BAA8B;GAC9B,UAAU;AACb;AACA;GACG,kBAAkB;GAClB,MAAM;GACN,OAAO;GACP,WAAW;GACX,YAAY;GACZ,gBAAgB;GAChB,YAAY;GACZ,UAAU;AACb;;AAEA;GACG,WAAW;GACX,gBAAgB;GAChB,aAAa;GACb,sBAAsB;AACzB;;AAEA;GACG,aAAa;GACb,6BAA6B;AAChC;AACA;GACG,aAAa;GACb,6BAA6B;AAChC;;AAEA;GACG,kBAAkB;AACrB;;AAEA;GACG,kBAAkB;AACrB;;AAEA;GACG,kBAAkB;AACrB;;AAEA;GACG,gBAAgB;GAChB,eAAe;AAClB","sourcesContent":["*{\r\n   font-family: 'Oswald', sans-serif;\r\n}\r\nbody{\r\n   background: rgb(255,204,0);\r\n   height: 100vh;\r\n   display: flex;\r\n   flex-direction: column;\r\n   justify-content: center;\r\n   align-items: center;\r\n}\r\n.main-container{\r\n   margin: 0px auto;\r\n}\r\n.main-wrapper{\r\n   display: flex;\r\n   justify-content: center;\r\n   align-items: center;\r\n   margin: 0px auto;\r\n   width: 600px;\r\n   height: 400px;\r\n   background-color: rgb(255, 255, 255);\r\n   border-radius: 20px;\r\n}\r\n.timer{\r\n   width: 100%;\r\n   margin: 0px auto;\r\n   display: flex;\r\n   flex-direction: column;\r\n}\r\n.timer__items{\r\n   display: flex;\r\n   justify-content: space-around;\r\n}\r\n.main-title{\r\n   font-weight: 700;\r\n   font-size: 36px;\r\n   margin-bottom: 20px;\r\n}\r\n.dates{\r\n   font-weight: 700;\r\n   font-size: 36px;\r\n   margin-top: 20px;\r\n   cursor: pointer;\r\n}\r\n.timer__titels{\r\n   display: flex;\r\n   justify-content: space-around;\r\n}\r\n.timer__titel:nth-child(1){\r\n   padding-left: 13px;\r\n}\r\n.timer__titel:nth-child(2) {\r\n   padding-left: 20px;\r\n}\r\n.timer__titel:nth-child(3) {\r\n   padding-left: 13px;\r\n}\r\n.timer__item{\r\n   font-weight: 700;\r\n   font-size: 48px;\r\n}\r\n\r\n@media (max-width: 600px) {\r\n   body{\r\n      display: flex;\r\n   }\r\n   .main-wrapper{\r\n      display: flex;\r\n      justify-content: center;\r\n      align-items: center;\r\n      margin: 0px auto;\r\n      width: 300px;\r\n      height: 500px;\r\n      margin: 30px 40px 0px 40px;\r\n      background-color: rgb(255, 255, 255);\r\n      border-radius: 20px;\r\n      padding: 0px 20px;\r\n   }\r\n   .timer{\r\n      height: 100%;\r\n      margin: 0px auto;\r\n      display: flex;\r\n      justify-content: space-around;\r\n      flex-direction: row;\r\n      align-items: center;                                       \r\n   }\r\n   .timer__items{\r\n      height: 100%;\r\n      display: flex;\r\n      justify-content: space-around;\r\n      flex-direction: column;\r\n   }\r\n   .timer__titels{\r\n      height: 100%;\r\n      display: flex;\r\n      justify-content: space-around;\r\n      flex-direction: column;\r\n   }\r\n   .timer__item {\r\n      font-weight: 700;\r\n      font-size: 36px;\r\n   }\r\n   .main-title {\r\n      padding-left: 50px;\r\n      font-weight: 700;\r\n      font-size: 36px;\r\n      margin-bottom: 20px;\r\n   }\r\n}\r\n\r\n@media (max-width: 480px){\r\n   .main-wrapper{\r\n      display: flex;\r\n      justify-content: center;\r\n      align-items: center;\r\n      margin: 0px auto;\r\n      width: 260px;\r\n      height: 400px;\r\n      margin: 30px 40px 0px 40px;\r\n      background-color: rgb(255, 255, 255);\r\n      border-radius: 20px;\r\n      padding: 0px 20px;\r\n   }\r\n}\r\n/* POPUP */\r\n.popup-wrapper{\r\n   visibility: hidden;\r\n   position: fixed;\r\n   display: flex;\r\n   align-items: center;\r\n   top: 0;\r\n   left: 0;\r\n   width: 100%;\r\n   height: 100%;\r\n   \r\n}\r\n.popup-wrapper-open{\r\n   visibility: visible;\r\n}\r\n.popup-container{\r\n   position: relative;\r\n   width: 600px;\r\n   height: 600px;\r\n   margin: 0px auto;\r\n   background: rgb(222, 219, 219);\r\n   z-index: 1;\r\n}\r\n.popup-overlay{\r\n   position: absolute;\r\n   top: 0;\r\n   left: 0;\r\n   width: 100%;\r\n   height: 102%;\r\n   background: #000;\r\n   opacity: 0.7;\r\n   z-index: 0;\r\n}\r\n\r\n.timers {\r\n   width: 100%;\r\n   margin: 0px auto;\r\n   display: flex;\r\n   flex-direction: column;\r\n}\r\n\r\n.timers__items {\r\n   display: flex;\r\n   justify-content: space-around;\r\n}\r\n.timers__titels {\r\n   display: flex;\r\n   justify-content: space-around;\r\n}\r\n\r\n.timers__titel:nth-child(1) {\r\n   padding-left: 13px;\r\n}\r\n\r\n.timers__titel:nth-child(2) {\r\n   padding-left: 20px;\r\n}\r\n\r\n.timers__titel:nth-child(3) {\r\n   padding-left: 13px;\r\n}\r\n\r\n.timers__item {\r\n   font-weight: 700;\r\n   font-size: 48px;\r\n}"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, "*{\r\n   font-family: 'Oswald', sans-serif;\r\n}\r\nbody{\r\n   background: rgb(255,204,0);\r\n   height: 100vh;\r\n   display: flex;\r\n   flex-direction: column;\r\n   justify-content: center;\r\n   align-items: center;\r\n}\r\n.main-container{\r\n   margin: 0px auto;\r\n}\r\n.main-wrapper{\r\n   display: flex;\r\n   justify-content: center;\r\n   align-items: center;\r\n   margin: 0px auto;\r\n   width: 600px;\r\n   height: 400px;\r\n   background-color: rgb(255, 255, 255);\r\n   border-radius: 20px;\r\n}\r\n.timer{\r\n   width: 100%;\r\n   margin: 0px auto;\r\n   display: flex;\r\n   flex-direction: column;\r\n}\r\n.timer__items{\r\n   display: flex;\r\n   justify-content: space-around;\r\n}\r\n.main-title{\r\n   font-weight: 700;\r\n   font-size: 36px;\r\n   margin-bottom: 20px;\r\n}\r\n.dates{\r\n   font-weight: 700;\r\n   font-size: 36px;\r\n   margin-top: 20px;\r\n   cursor: pointer;\r\n}\r\n.timer__titels{\r\n   display: flex;\r\n   justify-content: space-around;\r\n}\r\n.timer__titel:nth-child(1){\r\n   padding-left: 13px;\r\n}\r\n.timer__titel:nth-child(2) {\r\n   padding-left: 20px;\r\n}\r\n.timer__titel:nth-child(3) {\r\n   padding-left: 13px;\r\n}\r\n.timer__item{\r\n   font-weight: 700;\r\n   font-size: 48px;\r\n}\r\n\r\n@media (max-width: 600px) {\r\n   body{\r\n      display: flex;\r\n   }\r\n   .main-wrapper{\r\n      display: flex;\r\n      justify-content: center;\r\n      align-items: center;\r\n      margin: 0px auto;\r\n      width: 300px;\r\n      height: 500px;\r\n      margin: 30px 40px 0px 40px;\r\n      background-color: rgb(255, 255, 255);\r\n      border-radius: 20px;\r\n      padding: 0px 20px;\r\n   }\r\n   .timer{\r\n      height: 100%;\r\n      margin: 0px auto;\r\n      display: flex;\r\n      justify-content: space-around;\r\n      flex-direction: row;\r\n      align-items: center;                                       \r\n   }\r\n   .timer__items{\r\n      height: 100%;\r\n      display: flex;\r\n      justify-content: space-around;\r\n      flex-direction: column;\r\n   }\r\n   .timer__titels{\r\n      height: 100%;\r\n      display: flex;\r\n      justify-content: space-around;\r\n      flex-direction: column;\r\n   }\r\n   .timer__item {\r\n      font-weight: 700;\r\n      font-size: 36px;\r\n   }\r\n   .main-title {\r\n      padding-left: 50px;\r\n      font-weight: 700;\r\n      font-size: 36px;\r\n      margin-bottom: 20px;\r\n   }\r\n}\r\n\r\n@media (max-width: 480px){\r\n   .main-wrapper{\r\n      display: flex;\r\n      justify-content: center;\r\n      align-items: center;\r\n      margin: 0px auto;\r\n      width: 260px;\r\n      height: 400px;\r\n      margin: 30px 40px 0px 40px;\r\n      background-color: rgb(255, 255, 255);\r\n      border-radius: 20px;\r\n      padding: 0px 20px;\r\n   }\r\n}\r\n/* POPUP */\r\n.popup-wrapper{\r\n   visibility: hidden;\r\n   position: fixed;\r\n   display: flex;\r\n   align-items: center;\r\n   top: 0;\r\n   left: 0;\r\n   width: 100%;\r\n   height: 100%;\r\n   \r\n}\r\n.popup-wrapper-open{\r\n   visibility: visible;\r\n}\r\n.popup-container{\r\n   position: relative;\r\n   display: flex;\r\n   justify-content: space-around;\r\n   flex-direction: column;\r\n   align-items: center;\r\n   width: 600px;\r\n   height: 600px;\r\n   margin: 0px auto;\r\n   background: rgb(222, 219, 219);\r\n   border-radius: 30px;\r\n   z-index: 1;\r\n}\r\n.popup-overlay{\r\n   position: absolute;\r\n   top: 0;\r\n   left: 0;\r\n   width: 100%;\r\n   height: 102%;\r\n   background: #000;\r\n   opacity: 0.7;\r\n   z-index: 0;\r\n}\r\n\r\n\r\n.timers {\r\n   width: 100%;\r\n   margin: 0px auto;\r\n   display: flex;\r\n   flex-direction: column;\r\n}\r\n\r\n.timers__items {\r\n   display: flex;\r\n   justify-content: space-around;\r\n}\r\n.timers__titels {\r\n   display: flex;\r\n   justify-content: space-around;\r\n}\r\n\r\n.timers__titel:nth-child(1) {\r\n   padding-left: 13px;\r\n}\r\n\r\n.timers__titel:nth-child(2) {\r\n   padding-left: 20px;\r\n}\r\n\r\n.timers__titel:nth-child(3) {\r\n   padding-left: 13px;\r\n}\r\n\r\n.timers__item {\r\n   font-weight: 700;\r\n   font-size: 48px;\r\n}\r\n\r\n/* POPUS BUTTON LIST */\r\n.popup-button-wrap {\r\n   width: 400px;\r\n   height: 200px;\r\n   background: rgb(255, 204, 0);\r\n   border-radius: 10px;\r\n}\r\n\r\n.popup__list-item{\r\n   cursor: pointer;\r\n}", "",{"version":3,"sources":["webpack://./src/styles/style.css"],"names":[],"mappings":"AAAA;GACG,iCAAiC;AACpC;AACA;GACG,0BAA0B;GAC1B,aAAa;GACb,aAAa;GACb,sBAAsB;GACtB,uBAAuB;GACvB,mBAAmB;AACtB;AACA;GACG,gBAAgB;AACnB;AACA;GACG,aAAa;GACb,uBAAuB;GACvB,mBAAmB;GACnB,gBAAgB;GAChB,YAAY;GACZ,aAAa;GACb,oCAAoC;GACpC,mBAAmB;AACtB;AACA;GACG,WAAW;GACX,gBAAgB;GAChB,aAAa;GACb,sBAAsB;AACzB;AACA;GACG,aAAa;GACb,6BAA6B;AAChC;AACA;GACG,gBAAgB;GAChB,eAAe;GACf,mBAAmB;AACtB;AACA;GACG,gBAAgB;GAChB,eAAe;GACf,gBAAgB;GAChB,eAAe;AAClB;AACA;GACG,aAAa;GACb,6BAA6B;AAChC;AACA;GACG,kBAAkB;AACrB;AACA;GACG,kBAAkB;AACrB;AACA;GACG,kBAAkB;AACrB;AACA;GACG,gBAAgB;GAChB,eAAe;AAClB;;AAEA;GACG;MACG,aAAa;GAChB;GACA;MACG,aAAa;MACb,uBAAuB;MACvB,mBAAmB;MACnB,gBAAgB;MAChB,YAAY;MACZ,aAAa;MACb,0BAA0B;MAC1B,oCAAoC;MACpC,mBAAmB;MACnB,iBAAiB;GACpB;GACA;MACG,YAAY;MACZ,gBAAgB;MAChB,aAAa;MACb,6BAA6B;MAC7B,mBAAmB;MACnB,mBAAmB;GACtB;GACA;MACG,YAAY;MACZ,aAAa;MACb,6BAA6B;MAC7B,sBAAsB;GACzB;GACA;MACG,YAAY;MACZ,aAAa;MACb,6BAA6B;MAC7B,sBAAsB;GACzB;GACA;MACG,gBAAgB;MAChB,eAAe;GAClB;GACA;MACG,kBAAkB;MAClB,gBAAgB;MAChB,eAAe;MACf,mBAAmB;GACtB;AACH;;AAEA;GACG;MACG,aAAa;MACb,uBAAuB;MACvB,mBAAmB;MACnB,gBAAgB;MAChB,YAAY;MACZ,aAAa;MACb,0BAA0B;MAC1B,oCAAoC;MACpC,mBAAmB;MACnB,iBAAiB;GACpB;AACH;AACA,UAAU;AACV;GACG,kBAAkB;GAClB,eAAe;GACf,aAAa;GACb,mBAAmB;GACnB,MAAM;GACN,OAAO;GACP,WAAW;GACX,YAAY;;AAEf;AACA;GACG,mBAAmB;AACtB;AACA;GACG,kBAAkB;GAClB,aAAa;GACb,6BAA6B;GAC7B,sBAAsB;GACtB,mBAAmB;GACnB,YAAY;GACZ,aAAa;GACb,gBAAgB;GAChB,8BAA8B;GAC9B,mBAAmB;GACnB,UAAU;AACb;AACA;GACG,kBAAkB;GAClB,MAAM;GACN,OAAO;GACP,WAAW;GACX,YAAY;GACZ,gBAAgB;GAChB,YAAY;GACZ,UAAU;AACb;;;AAGA;GACG,WAAW;GACX,gBAAgB;GAChB,aAAa;GACb,sBAAsB;AACzB;;AAEA;GACG,aAAa;GACb,6BAA6B;AAChC;AACA;GACG,aAAa;GACb,6BAA6B;AAChC;;AAEA;GACG,kBAAkB;AACrB;;AAEA;GACG,kBAAkB;AACrB;;AAEA;GACG,kBAAkB;AACrB;;AAEA;GACG,gBAAgB;GAChB,eAAe;AAClB;;AAEA,sBAAsB;AACtB;GACG,YAAY;GACZ,aAAa;GACb,4BAA4B;GAC5B,mBAAmB;AACtB;;AAEA;GACG,eAAe;AAClB","sourcesContent":["*{\r\n   font-family: 'Oswald', sans-serif;\r\n}\r\nbody{\r\n   background: rgb(255,204,0);\r\n   height: 100vh;\r\n   display: flex;\r\n   flex-direction: column;\r\n   justify-content: center;\r\n   align-items: center;\r\n}\r\n.main-container{\r\n   margin: 0px auto;\r\n}\r\n.main-wrapper{\r\n   display: flex;\r\n   justify-content: center;\r\n   align-items: center;\r\n   margin: 0px auto;\r\n   width: 600px;\r\n   height: 400px;\r\n   background-color: rgb(255, 255, 255);\r\n   border-radius: 20px;\r\n}\r\n.timer{\r\n   width: 100%;\r\n   margin: 0px auto;\r\n   display: flex;\r\n   flex-direction: column;\r\n}\r\n.timer__items{\r\n   display: flex;\r\n   justify-content: space-around;\r\n}\r\n.main-title{\r\n   font-weight: 700;\r\n   font-size: 36px;\r\n   margin-bottom: 20px;\r\n}\r\n.dates{\r\n   font-weight: 700;\r\n   font-size: 36px;\r\n   margin-top: 20px;\r\n   cursor: pointer;\r\n}\r\n.timer__titels{\r\n   display: flex;\r\n   justify-content: space-around;\r\n}\r\n.timer__titel:nth-child(1){\r\n   padding-left: 13px;\r\n}\r\n.timer__titel:nth-child(2) {\r\n   padding-left: 20px;\r\n}\r\n.timer__titel:nth-child(3) {\r\n   padding-left: 13px;\r\n}\r\n.timer__item{\r\n   font-weight: 700;\r\n   font-size: 48px;\r\n}\r\n\r\n@media (max-width: 600px) {\r\n   body{\r\n      display: flex;\r\n   }\r\n   .main-wrapper{\r\n      display: flex;\r\n      justify-content: center;\r\n      align-items: center;\r\n      margin: 0px auto;\r\n      width: 300px;\r\n      height: 500px;\r\n      margin: 30px 40px 0px 40px;\r\n      background-color: rgb(255, 255, 255);\r\n      border-radius: 20px;\r\n      padding: 0px 20px;\r\n   }\r\n   .timer{\r\n      height: 100%;\r\n      margin: 0px auto;\r\n      display: flex;\r\n      justify-content: space-around;\r\n      flex-direction: row;\r\n      align-items: center;                                       \r\n   }\r\n   .timer__items{\r\n      height: 100%;\r\n      display: flex;\r\n      justify-content: space-around;\r\n      flex-direction: column;\r\n   }\r\n   .timer__titels{\r\n      height: 100%;\r\n      display: flex;\r\n      justify-content: space-around;\r\n      flex-direction: column;\r\n   }\r\n   .timer__item {\r\n      font-weight: 700;\r\n      font-size: 36px;\r\n   }\r\n   .main-title {\r\n      padding-left: 50px;\r\n      font-weight: 700;\r\n      font-size: 36px;\r\n      margin-bottom: 20px;\r\n   }\r\n}\r\n\r\n@media (max-width: 480px){\r\n   .main-wrapper{\r\n      display: flex;\r\n      justify-content: center;\r\n      align-items: center;\r\n      margin: 0px auto;\r\n      width: 260px;\r\n      height: 400px;\r\n      margin: 30px 40px 0px 40px;\r\n      background-color: rgb(255, 255, 255);\r\n      border-radius: 20px;\r\n      padding: 0px 20px;\r\n   }\r\n}\r\n/* POPUP */\r\n.popup-wrapper{\r\n   visibility: hidden;\r\n   position: fixed;\r\n   display: flex;\r\n   align-items: center;\r\n   top: 0;\r\n   left: 0;\r\n   width: 100%;\r\n   height: 100%;\r\n   \r\n}\r\n.popup-wrapper-open{\r\n   visibility: visible;\r\n}\r\n.popup-container{\r\n   position: relative;\r\n   display: flex;\r\n   justify-content: space-around;\r\n   flex-direction: column;\r\n   align-items: center;\r\n   width: 600px;\r\n   height: 600px;\r\n   margin: 0px auto;\r\n   background: rgb(222, 219, 219);\r\n   border-radius: 30px;\r\n   z-index: 1;\r\n}\r\n.popup-overlay{\r\n   position: absolute;\r\n   top: 0;\r\n   left: 0;\r\n   width: 100%;\r\n   height: 102%;\r\n   background: #000;\r\n   opacity: 0.7;\r\n   z-index: 0;\r\n}\r\n\r\n\r\n.timers {\r\n   width: 100%;\r\n   margin: 0px auto;\r\n   display: flex;\r\n   flex-direction: column;\r\n}\r\n\r\n.timers__items {\r\n   display: flex;\r\n   justify-content: space-around;\r\n}\r\n.timers__titels {\r\n   display: flex;\r\n   justify-content: space-around;\r\n}\r\n\r\n.timers__titel:nth-child(1) {\r\n   padding-left: 13px;\r\n}\r\n\r\n.timers__titel:nth-child(2) {\r\n   padding-left: 20px;\r\n}\r\n\r\n.timers__titel:nth-child(3) {\r\n   padding-left: 13px;\r\n}\r\n\r\n.timers__item {\r\n   font-weight: 700;\r\n   font-size: 48px;\r\n}\r\n\r\n/* POPUS BUTTON LIST */\r\n.popup-button-wrap {\r\n   width: 400px;\r\n   height: 200px;\r\n   background: rgb(255, 204, 0);\r\n   border-radius: 10px;\r\n}\r\n\r\n.popup__list-item{\r\n   cursor: pointer;\r\n}"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -154,6 +44,7 @@ ___CSS_LOADER_EXPORT___.push([module.id, "*{\r\n   font-family: 'Oswald', sans-s
   \*****************************************************/
 /***/ ((module) => {
 
+"use strict";
 
 
 /*
@@ -248,6 +139,7 @@ module.exports = function (cssWithMappingToString) {
   \************************************************************/
 /***/ ((module) => {
 
+"use strict";
 
 
 module.exports = function (item) {
@@ -273,6 +165,7 @@ module.exports = function (item) {
   \******************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
@@ -327,6 +220,7 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
   \****************************************************************************/
 /***/ ((module) => {
 
+"use strict";
 
 
 var stylesInDOM = [];
@@ -440,6 +334,7 @@ module.exports = function (list, options) {
   \********************************************************************/
 /***/ ((module) => {
 
+"use strict";
 
 
 var memo = {};
@@ -488,6 +383,7 @@ module.exports = insertBySelector;
   \**********************************************************************/
 /***/ ((module) => {
 
+"use strict";
 
 
 /* istanbul ignore next  */
@@ -508,6 +404,7 @@ module.exports = insertStyleElement;
   \**********************************************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
+"use strict";
 
 
 /* istanbul ignore next  */
@@ -529,6 +426,7 @@ module.exports = setAttributesWithoutAttributes;
   \***************************************************************/
 /***/ ((module) => {
 
+"use strict";
 
 
 /* istanbul ignore next  */
@@ -608,6 +506,7 @@ module.exports = domAPI;
   \*********************************************************************/
 /***/ ((module) => {
 
+"use strict";
 
 
 /* istanbul ignore next  */
@@ -701,13 +600,15 @@ module.exports = styleTagTransform;
 /******/ 	
 /************************************************************************/
 var __webpack_exports__ = {};
-// This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
+// This entry need to be wrapped in an IIFE because it need to be in strict mode.
 (() => {
+"use strict";
 /*!**********************!*\
   !*** ./src/index.js ***!
   \**********************/
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _test_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./test-index.js */ "./src/test-index.js");
+/* harmony import */ var _test_index_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_test_index_js__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _styles_style_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./styles/style.css */ "./src/styles/style.css");
 
 
@@ -717,7 +618,7 @@ __webpack_require__.r(__webpack_exports__);
 (0,_test_index_js__WEBPACK_IMPORTED_MODULE_0__.createPopUp)();
 (0,_test_index_js__WEBPACK_IMPORTED_MODULE_0__.openClosePopup)();
 (0,_test_index_js__WEBPACK_IMPORTED_MODULE_0__.setTimer)(new Date(2023, 0, 31, 20, 0, 0, 0));
-(0,_test_index_js__WEBPACK_IMPORTED_MODULE_0__.setPopUpTimer)(new Date(2024, 0, 31, 20, 0, 0, 0));
+(0,_test_index_js__WEBPACK_IMPORTED_MODULE_0__.setPopupDates)();
 })();
 
 /******/ })()
